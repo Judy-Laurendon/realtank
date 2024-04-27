@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float life = 3;
+    public float life = 3; // Durée de vie de la balle avant auto-destruction
 
     void Awake()
     {
-        Destroy(gameObject, life);
+        Destroy(gameObject, life); // Détruit automatiquement la balle après 'life' secondes
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Enemie")
-    {
-        Destroy(collision.gameObject);
-        Destroy(gameObject);
+        if (collision.gameObject.CompareTag("Target")) // Vérifie si l'objet touché est une cible
+        {
+            Destroy(collision.gameObject); // Détruit la cible
+            TargetManager.instance.TargetHit(); // Notifie le TargetManager qu'une cible a été touchée
+            Destroy(gameObject); // Détruit la balle
+        }
     }
-}
 }

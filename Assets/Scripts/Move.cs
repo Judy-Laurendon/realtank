@@ -19,14 +19,14 @@ public class Move : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    private void FixedUpdate()
     {
         /*
         localTransform.Rotate(Vector3.up, Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime);
         localTransform.Translate(Input.GetAxis("Vertical") * Vector3.forward * maxSpeed * Time.deltaTime);
         */
         
-        transform.Rotate(Vector3.up, -rotateAxis * rotationSpeed * Time.deltaTime);
+        transform.Rotate(Vector3.up, -rotateAxis * rotationSpeed);
         
         // transform.Translate( -moveAxis * maxSpeed * Vector3.forward);
         
